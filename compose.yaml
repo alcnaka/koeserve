@@ -1,0 +1,42 @@
+services:
+  koeserve:
+    build:
+      context: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      KOESERVE_MODELS_CONFIG: /models/manifest.toml
+      KOESERVE_WORKERS: "2"
+      KOESERVE_QUEUE_CAPACITY: "32"
+    volumes:
+      - ./models:/models:ro
+    command: ["serve"]
+
+  # Optional local/demo service. Start explicitly with:
+  # docker compose --profile playground up koeserve-playground
+  koeserve-playground:
+    build:
+      context: .
+    profiles: ["playground"]
+    ports:
+      - "127.0.0.1:3001:3000"
+    environment:
+      KOESERVE_MODELS_CONFIG: /models/manifest.toml
+      KOESERVE_WORKERS: "2"
+      KOESERVE_QUEUE_CAPACITY: "32"
+    volumes:
+      - ./models:/models:ro
+    command: ["serve", "--docs", "--playground"]
+    restart: "no"
+
+  model-setup:
+    build:
+      context: .
+    profiles: ["setup"]
+    environment:
+      KOESERVE_MODELS_CONFIG: /models/manifest.toml
+    volumes:
+      - ./models:/models
+    command: ["models", "fetch", "--all", "--allow-unverified"]
+    restart: "no"

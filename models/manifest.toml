@@ -1,0 +1,211 @@
+version = 1
+
+# Model downloads are explicit: `cargo run -- models fetch ...`.
+# Server startup NEVER downloads files.
+#
+# A source may be `raw`, `zip`, or `tar_gz`. For archives, each voice uses
+# `source_path` to select its .htsvoice member. Set sha256 whenever possible;
+# KoeServe refuses an unpinned source unless --allow-unverified is supplied.
+
+
+# MMDAgent Example 1.8 official SourceForge distribution.
+# The archive contains Mei (5 styles), Takumi (4 styles), and CMU ARCTIC SLT.
+# The MMDAgent sample README instructs users to consult the README/COPYRIGHT
+# files in each content directory. The voice models are distributed under
+# Creative Commons Attribution terms; keep attribution/license notices when
+# redistributing models or generated bundles.
+[[sources]]
+id = "mmdagent-example-1.8"
+url = "https://downloads.sourceforge.net/project/mmdagent/MMDAgent_Example/MMDAgent_Example-1.8/MMDAgent_Example-1.8.zip"
+format = "zip"
+license = "Mixed bundled voice notices (Mei/Takumi: CC-BY-3.0; see retained files)"
+license_url = "https://mmdagent.wordpress.com/2013/12/13/license-terms-of-for-the-all-files-other-than-the-3-d-model-mei/"
+license_paths = [
+  "MMDAgent_Example-1.8/Voice/mei/COPYRIGHT.txt",
+  "MMDAgent_Example-1.8/Voice/mei/README.txt",
+  "MMDAgent_Example-1.8/Voice/takumi/COPYRIGHT.txt",
+  "MMDAgent_Example-1.8/Voice/takumi/README.txt",
+]
+# sha256 = "<pin the downloaded MMDAgent_Example-1.8.zip SHA-256 here>"
+
+# Verified upstream/license example: Tohoku-f01 is published by Tohoku
+# University's ICN Lab under CC BY 4.0.
+# Add a SHA-256 before using automatic fetch in production.
+[[sources]]
+id = "tohoku-f01"
+url = "https://github.com/icn-lab/htsvoice-tohoku-f01/archive/refs/heads/master.zip"
+format = "zip"
+license = "CC-BY-4.0"
+license_url = "https://raw.githubusercontent.com/icn-lab/htsvoice-tohoku-f01/master/COPYRIGHT.txt"
+license_paths = [
+  "htsvoice-tohoku-f01-master/COPYRIGHT.txt",
+  "htsvoice-tohoku-f01-master/README.md",
+]
+# sha256 = "<pin the downloaded archive SHA-256 here>"
+
+# Open JTalk's official SourceForge distribution of NIT ATR503 M001 v1.05.
+[[sources]]
+id = "m001-1.05"
+url = "https://sourceforge.net/projects/open-jtalk/files/HTS%20voice/hts_voice_nitech_jp_atr503_m001-1.05/hts_voice_nitech_jp_atr503_m001-1.05.tar.gz/download"
+format = "tar_gz"
+license = "CC-BY-3.0"
+license_paths = [
+  "hts_voice_nitech_jp_atr503_m001-1.05/COPYING",
+  "hts_voice_nitech_jp_atr503_m001-1.05/README",
+]
+# sha256 = "<pin the downloaded archive SHA-256 here>"
+
+[[voices]]
+id = "tohoku_neutral"
+speaker = "tohoku"
+style = "neutral"
+display_name = "Tohoku Neutral"
+path = "tohoku/tohoku-f01-neutral.htsvoice"
+enabled = true
+source = "tohoku-f01"
+source_path = "htsvoice-tohoku-f01-master/tohoku-f01-neutral.htsvoice"
+
+[[voices]]
+id = "tohoku_happy"
+speaker = "tohoku"
+style = "happy"
+display_name = "Tohoku Happy"
+path = "tohoku/tohoku-f01-happy.htsvoice"
+enabled = true
+source = "tohoku-f01"
+source_path = "htsvoice-tohoku-f01-master/tohoku-f01-happy.htsvoice"
+
+[[voices]]
+id = "tohoku_angry"
+speaker = "tohoku"
+style = "angry"
+display_name = "Tohoku Angry"
+path = "tohoku/tohoku-f01-angry.htsvoice"
+enabled = true
+source = "tohoku-f01"
+source_path = "htsvoice-tohoku-f01-master/tohoku-f01-angry.htsvoice"
+
+[[voices]]
+id = "tohoku_sad"
+speaker = "tohoku"
+style = "sad"
+display_name = "Tohoku Sad"
+path = "tohoku/tohoku-f01-sad.htsvoice"
+enabled = true
+source = "tohoku-f01"
+source_path = "htsvoice-tohoku-f01-master/tohoku-f01-sad.htsvoice"
+
+[[voices]]
+id = "m001"
+speaker = "m001"
+style = "default"
+display_name = "NIT ATR503 M001"
+path = "m001/nitech_jp_atr503_m001.htsvoice"
+enabled = true
+source = "m001-1.05"
+source_path = "hts_voice_nitech_jp_atr503_m001-1.05/nitech_jp_atr503_m001.htsvoice"
+
+
+[[voices]]
+id = "mei_normal"
+speaker = "mei"
+style = "normal"
+display_name = "Mei Normal"
+path = "mei/mei_normal.htsvoice"
+enabled = true
+source = "mmdagent-example-1.8"
+source_path = "MMDAgent_Example-1.8/Voice/mei/mei_normal.htsvoice"
+
+[[voices]]
+id = "mei_happy"
+speaker = "mei"
+style = "happy"
+display_name = "Mei Happy"
+path = "mei/mei_happy.htsvoice"
+enabled = true
+source = "mmdagent-example-1.8"
+source_path = "MMDAgent_Example-1.8/Voice/mei/mei_happy.htsvoice"
+
+[[voices]]
+id = "mei_angry"
+speaker = "mei"
+style = "angry"
+display_name = "Mei Angry"
+path = "mei/mei_angry.htsvoice"
+enabled = true
+source = "mmdagent-example-1.8"
+source_path = "MMDAgent_Example-1.8/Voice/mei/mei_angry.htsvoice"
+
+[[voices]]
+id = "mei_sad"
+speaker = "mei"
+style = "sad"
+display_name = "Mei Sad"
+path = "mei/mei_sad.htsvoice"
+enabled = true
+source = "mmdagent-example-1.8"
+source_path = "MMDAgent_Example-1.8/Voice/mei/mei_sad.htsvoice"
+
+[[voices]]
+id = "mei_bashful"
+speaker = "mei"
+style = "bashful"
+display_name = "Mei Bashful"
+path = "mei/mei_bashful.htsvoice"
+enabled = true
+source = "mmdagent-example-1.8"
+source_path = "MMDAgent_Example-1.8/Voice/mei/mei_bashful.htsvoice"
+
+[[voices]]
+id = "takumi_normal"
+speaker = "takumi"
+style = "normal"
+display_name = "Takumi Normal"
+path = "takumi/takumi_normal.htsvoice"
+enabled = true
+source = "mmdagent-example-1.8"
+source_path = "MMDAgent_Example-1.8/Voice/takumi/takumi_normal.htsvoice"
+
+[[voices]]
+id = "takumi_happy"
+speaker = "takumi"
+style = "happy"
+display_name = "Takumi Happy"
+path = "takumi/takumi_happy.htsvoice"
+enabled = true
+source = "mmdagent-example-1.8"
+source_path = "MMDAgent_Example-1.8/Voice/takumi/takumi_happy.htsvoice"
+
+[[voices]]
+id = "takumi_angry"
+speaker = "takumi"
+style = "angry"
+display_name = "Takumi Angry"
+path = "takumi/takumi_angry.htsvoice"
+enabled = true
+source = "mmdagent-example-1.8"
+source_path = "MMDAgent_Example-1.8/Voice/takumi/takumi_angry.htsvoice"
+
+[[voices]]
+id = "takumi_sad"
+speaker = "takumi"
+style = "sad"
+display_name = "Takumi Sad"
+path = "takumi/takumi_sad.htsvoice"
+enabled = true
+source = "mmdagent-example-1.8"
+source_path = "MMDAgent_Example-1.8/Voice/takumi/takumi_sad.htsvoice"
+
+# CMU ARCTIC SLT is included in MMDAgent Example 1.8, but it is an English
+# voice and is not compatible with KoeServe's Japanese JPreprocess pipeline.
+# Keep it catalogued for completeness, but do not load it into the server.
+[[voices]]
+id = "slt"
+speaker = "slt"
+style = "default"
+display_name = "CMU ARCTIC SLT"
+path = "slt/cmu_us_arctic_slt.htsvoice"
+enabled = false
+source = "mmdagent-example-1.8"
+source_path = "MMDAgent_Example-1.8/Voice/slt/cmu_us_arctic_slt.htsvoice"
+

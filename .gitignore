@@ -1,0 +1,6 @@
+/target
+.env
+*.wav
+/models/**/*.htsvoice
+/models/licenses/
+/models/.cache/

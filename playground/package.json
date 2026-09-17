@@ -1,0 +1,25 @@
+{
+  "name": "koeserve-playground",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "generate:api": "openapi-typescript ${KOESERVE_OPENAPI_URL:-http://127.0.0.1:3000/openapi.json} -o src/api/schema.d.ts"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "openapi-fetch": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.3",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "openapi-typescript": "latest",
+    "typescript": "latest"
+  }
+}

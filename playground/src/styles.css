@@ -1,0 +1,32 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0b1020;
+  color: #eef2ff;
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, select, textarea { font: inherit; }
+.shell { min-height: 100vh; padding: 48px 20px; display: grid; place-items: start center; }
+.card { width: min(820px, 100%); background: rgba(17,24,39,.9); border: 1px solid #27324a; border-radius: 20px; padding: 32px; box-shadow: 0 24px 80px rgba(0,0,0,.28); }
+header { margin-bottom: 28px; }
+.eyebrow { margin: 0 0 4px; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #8da2fb; }
+h1 { margin: 0; font-size: clamp(32px, 5vw, 48px); }
+.muted, small { color: #99a3b7; }
+form { display: grid; gap: 20px; }
+label > span { display: block; margin-bottom: 8px; font-weight: 650; }
+select, textarea { width: 100%; border: 1px solid #34405b; border-radius: 12px; background: #0f172a; color: inherit; padding: 12px 14px; }
+textarea { resize: vertical; line-height: 1.6; }
+small { display: block; margin-top: 6px; text-align: right; }
+.controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.parameter { padding: 14px; border: 1px solid #2c3851; border-radius: 12px; background: #111a2d; }
+.parameter-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.parameter input[type="range"] { width: 100%; }
+.parameter strong { color: #c8d1ff; }
+.check { display: flex; gap: 8px; align-items: center; margin-top: 8px; color: #aab3c7; font-size: 14px; }
+button { border: 0; border-radius: 12px; padding: 13px 18px; background: #677cf5; color: white; font-weight: 750; cursor: pointer; }
+button:disabled { opacity: .5; cursor: default; }
+.player { display: flex; gap: 16px; align-items: center; margin-top: 24px; padding-top: 22px; border-top: 1px solid #28334a; }
+a { color: #9eb0ff; }
+.error { color: #ffaaa5; background: #321b21; border-radius: 10px; padding: 12px 14px; }
+@media (max-width: 640px) { .card { padding: 22px; } .controls { grid-template-columns: 1fr; } .player { align-items: stretch; flex-direction: column; } audio { width: 100%; } }

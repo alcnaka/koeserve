@@ -1,0 +1,34 @@
+[package]
+name = "koeserve"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "A lightweight Japanese TTS HTTP server powered by JPreprocess and JBonsai"
+
+[dependencies]
+anyhow = "1"
+axum = "0.8"
+clap = { version = "4", features = ["derive"] }
+crossbeam-channel = "0.5"
+flate2 = "1"
+hound = "3.5"
+jbonsai = "0.4.1"
+jpreprocess = { version = "0.15.0", features = ["naist-jdic"] }
+reqwest = { version = "0.13", default-features = false, features = ["rustls"] }
+rust-embed = "8"
+serde = { version = "1", features = ["derive"] }
+sha2 = "0.11"
+tar = "0.4"
+thiserror = "2"
+toml = "1.0"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "net", "signal", "sync", "fs"] }
+tower-http = { version = "0.7", features = ["trace"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+utoipa = { version = "5.5", features = ["axum_extras"] }
+utoipa-swagger-ui = { version = "9", features = ["axum", "vendored", "debug-embed"] }
+zip = { version = "8", default-features = false, features = ["deflate"] }
+
+[profile.release]
+lto = "thin"
+strip = true
