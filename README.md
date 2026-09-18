@@ -2,8 +2,6 @@
 
 A lightweight Japanese TTS HTTP server built with Rust, JPreprocess, and JBonsai.
 
-KoeServe is an independent project and is not affiliated with or endorsed by the JPreprocess organization.
-
 ## Current features
 
 - Axum HTTP server
